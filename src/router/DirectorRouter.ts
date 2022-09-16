@@ -5,10 +5,15 @@ import {
   GetDirectorsController,
   RegisterDirectorController,
 } from "../controller/DirectorController";
+import { RegisterDirectorMiddleWare } from "../middleware/DirectorMiddleware";
 const Router = express.Router();
 
 //
-Router.post(PostRoutes.add_director, RegisterDirectorController);
+Router.post(
+  PostRoutes.add_director,
+  RegisterDirectorMiddleWare,
+  RegisterDirectorController
+);
 
 //
 Router.get(GetRoutes.get_director, GetDirectorByIdController);
